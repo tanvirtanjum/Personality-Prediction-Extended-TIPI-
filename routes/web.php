@@ -19,5 +19,6 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/sign_in', 'SignInController@index')->name('signin');
+Route::post('/sign_in', 'SignInController@requestSignIn');
 
 Route::get('/sign_up', 'SignUpController@index')->name('signup');
