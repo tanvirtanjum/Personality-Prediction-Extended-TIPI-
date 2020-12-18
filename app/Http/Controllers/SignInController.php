@@ -13,6 +13,7 @@ class SignInController extends Controller
     return view('SignIn.index');
   }
 
+  //Request SignIn
   function requestSignIn(Request $request)
   {
     $user = DB::table('login')->where('username', $request->username)->where('password', $request->password)->get();
@@ -40,10 +41,10 @@ class SignInController extends Controller
     }
   }
 
+  //SignOut
   function requestSignOut(Request $request)
   {
-    //SignOut
     $request->session()->flush();
-  	return redirect()->route('home');
+  	return redirect()->route('signin');
   }
 }
