@@ -24,19 +24,26 @@ class SignInController extends Controller
 
       if($request->session()->get('role') == 1)
       {
-        //ADMIN
+        return redirect()->route('admin.dash');
       }
 
       if($request->session()->get('role') == 2)
       {
-        //CONSUMER
+        return redirect()->route('consumer.dash');
       }
     }
 
     else
     {
-      $request->session()->flash('_alert', 'Invalid');
+      $request->session()->flash('_alert', 'Invalid Username/Password');
       return redirect()->route('signin');
     }
+  }
+
+  function requestSignOut(Request $request)
+  {
+    //SignOut
+    $request->session()->flush();
+  	return redirect()->route('home');
   }
 }
