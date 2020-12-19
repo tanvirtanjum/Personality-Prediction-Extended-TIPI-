@@ -23,10 +23,10 @@
 							<li><a href="{{route('signout')}}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 						</ul>
 					</li>
-					<li><a href="{{route('consumer.quiz')}}"><i class="fab fa-product-hunt"></i>Take Quiz</a></li>
-					<li><a><i class="fas fa-cart-arrow-down"></i>Result<span class="sub_arrow"></span></a>
+					<li><a href="{{route('consumer.quiz')}}"><i class="fas fa-registered"></i>Take Quiz</a></li>
+					<li><a><i class="fas fa-history"></i>Result<span class="sub_arrow"></span></a>
 						<ul>
-							<li><a href="#"><i class="fas fa-shopping-cart"></i>Band Scores</a></li>
+							<li><a href="{{route('consumer.score')}}"><i class="far fa-clipboard"></i>Band Scores</a></li>
 						</ul>
 					</li>
 				</ul>

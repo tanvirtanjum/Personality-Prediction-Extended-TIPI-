@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use Validator;
 
 class SignUpController extends Controller
 {
@@ -12,7 +15,7 @@ class SignUpController extends Controller
     return view('SignUp.index');
   }
 
-  public function create(Request $request)
+  public function requestSignUp(Request $request)
     {
         $validate = Validator:: make($request->all(),[
             'username' => 'required',
@@ -29,15 +32,19 @@ class SignUpController extends Controller
         }
         else
         {
-            $LID = $request->username;
-            $pass= $request->confirmpassword;
-            $SID = '0';
+            $checkusername = DB::table('login')->where('username', $request->username)->get();
+            $checkmail = DB::table('users')->where('email',$request->email)->get();
 
-            //$login_table = DB::table('log_in')->insert(['LID'=>$LID,'SID'=>$SID,'PASS'=>$pass]);
-
-            if($login_table== TRUE)
+            if(count($checkusername) < 1 && count($checkmail) < 1)
             {
-                return redirect()->route('sign_in')->with('success','Account Created.');
+              DB::table('login')->insert(['username'=>$request->username, 'role_id'=>'2', 'password'=>$request->confirmpassword]);
+              DB::table('users')->insert(['username'=>$request->username, 'role_id'=>'2', 'name'=>$request->fullname,'email'=>$request->email,'age'=>$request->age, 'occupation'=>$request->design]);
+              return redirect()->route('signin')->with('success','Account Created. Ready to Sign In');
+            }
+
+            else
+            {
+              return back()->with('msg', 'Username/Email has been taken.')->withInput();
             }
         }
     }

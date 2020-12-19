@@ -203,4 +203,11 @@ class ConsumerController extends Controller
     return redirect()->route('consumer.dash');
 
   }
+
+  function viewScore(Request $request)
+  {
+    $res = DB::table('results')->where('username','=', $request->session()->get('user'))->get();
+
+    return view('ConsumerDash.BandScore.index')->with('res', $res);
+  }
 }

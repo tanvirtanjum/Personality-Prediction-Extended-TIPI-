@@ -42,7 +42,7 @@
         	@endforeach
 			<input type="submit" name="REGISTER" value="REGISTER"><br><br>
 
-
+      <div align='middle' style="color:red;">{{session('msg')}}</div>
 
 			<p><b>Or Sign In <a href="{{route('signin')}}">here</a></b></p>
 		</form>

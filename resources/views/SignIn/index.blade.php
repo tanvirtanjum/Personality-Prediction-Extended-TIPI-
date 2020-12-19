@@ -14,7 +14,10 @@
   			<input type="text" name="username" id="username" placeholder="Enter Username" required><br>
   			<p>Password</p>
   			<input type="password" name="password" id="password" placeholder="Enter Password" required><br>
-  			<div align="middle"> <span style="color:red; font-weight: bold;"> {{session('_alert')}} </span> </div> <br>
+  			<div align="middle">
+          <span style="color:red; font-weight: bold;">{{session('_alert')}}</span>
+          <span style="color:white; font-weight: bold;">{{session('success')}}</span>
+        </div> <br>
   			<input type='submit' name="LOGIN" value="LOGIN">
   			<a href="#" target="_blank">Forget password?</a><br>
   			<a href="{{route('signup')}}">Don't have an account?</a>

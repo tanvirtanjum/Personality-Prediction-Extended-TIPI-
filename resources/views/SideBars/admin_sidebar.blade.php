@@ -29,15 +29,14 @@
 							<li><a href="#"><i class="fas fa-users"></i>Customer Management</a></li>
 							<li><a href="#"><i class="fab fa-product-hunt"></i>Product Management</a></li>
 							<li><a href="#"><i class="fas fa-registered"></i>Pending Registrations</a></li>
-							<!--<li><a href="/adminDash/orderManageAdmin"><i class="fas fa-cart-plus"></i>Pending Orders</a></li>-->
 							<li><a href="#"><i class="fas fa-flag"></i>Notice Manage</a></li>
 						</ul>
 					</li>
-					<li><a href="#"><i class="fas fa-history"></i>Sales History</a></li>
-					<li><a href="#"><i class="fas fa-flag"></i>Notice</a></li>
-					<li><a href="#"><i class="fas fa-comment"></i>Customer Complain</a></li>
-					<li><a href="#"><i class="far fa-clipboard"></i>Notes</a></li>
-					<li><a href="#"><i class="fas fa-envelope"></i>Chatbox</a></li>
+					<li><a><i class="fas fa-history"></i>Result<span class="sub_arrow"></span></a>
+						<ul>
+							<li><a href="{{route('admin.score')}}"><i class="far fa-clipboard"></i>Survey Results</a></li>
+						</ul>
+					</li>
 				</ul>
 
 				<div class="social_media">
