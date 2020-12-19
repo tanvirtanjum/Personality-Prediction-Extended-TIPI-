@@ -29,3 +29,6 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dash');
 
 //Session(CONSUMER) Validation Required
 Route::get('/consumer/dashboard', 'ConsumerController@index')->name('consumer.dash');
+
+Route::get('/consumer/dashboard/take_quiz', 'ConsumerController@viewQuizModule')->name('consumer.quiz');
+Route::post('/consumer/dashboard/take_quiz', 'ConsumerController@postQuizModule');

@@ -44,7 +44,7 @@
 
 
 
-			<p><b>Or Log In <a href="{{route('signin')}}">here</a></b></p>
+			<p><b>Or Sign In <a href="{{route('signin')}}">here</a></b></p>
 		</form>
 	</div>
 </body>
