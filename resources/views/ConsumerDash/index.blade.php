@@ -10,6 +10,7 @@
 <body>
     <div class="pro">
 		<h1>Welcome to Consumer Dashboard</h1>
+    <div align="middle"> <span style="color:blue; font-weight: bold;"> {{session('_message')}} </span> </div> <br>
 	</div>
 </body>
 </html>
