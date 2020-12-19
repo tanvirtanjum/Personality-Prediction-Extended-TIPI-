@@ -27,10 +27,13 @@ class ConsumerController extends Controller
     $Extraversion= 0;
     $ecount = 0;
     $Conscientiousness= 0;
-    $ccount = 0
+    $ccount = 0;
     $Openness= 0;
+    $ocount = 0;
     $Agreeableness= 0;
+    $acount = 0;
     $Neuroticism= 0;
+    $ncount = 0;
 
     $q1 = $request->q1;
     $q2 = $request->q2;
