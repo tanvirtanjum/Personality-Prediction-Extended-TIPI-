@@ -10,7 +10,34 @@ class SignInController extends Controller
   //View SignIn
   function index()
   {
-    return view('SignIn.index');
+    if(session()->has('user') && session()->has('role'))
+    {
+      return redirect()->route('signin.justify');
+    }
+    else
+    {
+      return view('SignIn.index');
+    }
+  }
+
+  function checkLoggedInUser(Request $request)
+  {
+    if($request->session()->has('user') && $request->session()->has('role'))
+    {
+      if(session()->get('role') == 1)
+      {
+        return redirect()->route('admin.dash');
+      }
+
+      if(session()->get('role') == 2)
+      {
+        return redirect()->route('consumer.dash');
+      }
+    }
+    else
+    {
+      return redirect()->route('signin');
+    }
   }
 
   //Request SignIn

@@ -11,28 +11,38 @@
 |
 */
 
+//Session Validation Not Required
 Route::get('/', function () {
     return redirect()->route('signin');
 });
 
-//Session Validation Not Required
 Route::get('/sign_in', 'SignInController@index')->name('signin');
+Route::get('/sign_in/validate', 'SignInController@checkLoggedInUser')->name('signin.justify');
 Route::post('/sign_in', 'SignInController@requestSignIn');
 
 Route::get('/sign_up', 'SignUpController@index')->name('signup');
 Route::post('/sign_up', 'SignUpController@requestSignUp');
 
-//Session Validation Required
-Route::get('/sign_out', 'SignInController@requestSignOut')->name('signout');
+//Has Session Validation
+Route::middleware(['SESSION'])->group(function()
+{
+    Route::get('/sign_out', 'SignInController@requestSignOut')->name('signout');
 
-//Session(ADMIN) Validation Required
-Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dash');
-Route::get('/admin/dashboard/survey-results', 'AdminController@viewScore')->name('admin.score');
+    //ADMIN Session Validation
+    Route::group(['middleware'=>['ADMIN']],function()
+    {
+      Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dash');
+      Route::get('/admin/dashboard/survey-results', 'AdminController@viewScore')->name('admin.score');
+    });
 
-//Session(CONSUMER) Validation Required
-Route::get('/consumer/dashboard', 'ConsumerController@index')->name('consumer.dash');
+    //MANAGER Session Validation
+    Route::group(['middleware'=>['CONSUMER']],function()
+    {
+      Route::get('/consumer/dashboard', 'ConsumerController@index')->name('consumer.dash');
 
-Route::get('/consumer/dashboard/take_quiz', 'ConsumerController@viewQuizModule')->name('consumer.quiz');
-Route::post('/consumer/dashboard/take_quiz', 'ConsumerController@postQuizModule');
+      Route::get('/consumer/dashboard/take_quiz', 'ConsumerController@viewQuizModule')->name('consumer.quiz');
+      Route::post('/consumer/dashboard/take_quiz', 'ConsumerController@postQuizModule');
 
-Route::get('/consumer/dashboard/scores', 'ConsumerController@viewScore')->name('consumer.score');
+      Route::get('/consumer/dashboard/scores', 'ConsumerController@viewScore')->name('consumer.score');
+    });
+});
