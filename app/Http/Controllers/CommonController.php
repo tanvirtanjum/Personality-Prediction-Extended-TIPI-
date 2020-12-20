@@ -13,4 +13,16 @@ class CommonController extends Controller
     $request->session()->flush();
     return redirect()->route('signin');
   }
+
+  //ViewChangePassword
+  function viewChnagePassword(Request $request)
+  {
+    //code
+  }
+
+  //RequestChangePassword
+  function requestChnagePassword(Request $request)
+  {
+    //code
+  }
 }
