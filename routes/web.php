@@ -26,7 +26,7 @@ Route::post('/sign_up', 'SignUpController@requestSignUp');
 //Has Session Validation
 Route::middleware(['SESSION'])->group(function()
 {
-    Route::get('/sign_out', 'SignInController@requestSignOut')->name('signout');
+    Route::get('/sign_out', 'CommonController@requestSignOut')->name('signout');
 
     //ADMIN Session Validation
     Route::group(['middleware'=>['ADMIN']],function()

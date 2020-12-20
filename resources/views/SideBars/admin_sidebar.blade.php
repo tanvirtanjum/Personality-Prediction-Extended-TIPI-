@@ -18,7 +18,7 @@
 				<ul class="pop">
 					<li><a><i class="fas fa-user-circle"></i>Profile<span class="sub_arrow"></span></a>
 						<ul>
-							<li><a href="#"><i class="fas fa-address-card"></i>About {{session('LID')}}</a></li>
+							<li><a href="#"><i class="fas fa-address-card"></i>{{session('user')}}</a></li>
 							<li><a href="#"><i class="fas fa-key"></i>Change Password</a></li>
 							<li><a href="{{route('signout')}}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 						</ul>

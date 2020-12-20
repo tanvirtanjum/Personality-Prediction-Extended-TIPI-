@@ -67,11 +67,4 @@ class SignInController extends Controller
       return redirect()->route('signin');
     }
   }
-
-  //SignOut
-  function requestSignOut(Request $request)
-  {
-    $request->session()->flush();
-  	return redirect()->route('signin');
-  }
 }

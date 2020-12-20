@@ -28,11 +28,11 @@
               @foreach($res as $result)
                   <tr>
                     <th>{{$loop->index+1}} </th>
-                    <th>{{$result->extraversion_score}}</th>
-                    <th>{{$result->conscientiousness_score}}</th>
-                    <th>{{$result->openness_score}}</th>
-                    <th>{{$result->agreeableness_score}}</th>
-                    <th>{{$result->neuroticism_score}}</th>
+                    <th>{{$result->extraversion_score}}/7</th>
+                    <th>{{$result->conscientiousness_score}}/7</th>
+                    <th>{{$result->openness_score}}/7</th>
+                    <th>{{$result->agreeableness_score}}/7</th>
+                    <th>{{$result->neuroticism_score}}/7</th>
                     <th>{{$result->username}}</th>
                     <th>{{$result->submitted_at}}</th>
                   </tr>
