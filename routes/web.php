@@ -26,12 +26,28 @@ Route::post('/sign_up', 'SignUpController@requestSignUp');
 //Has Session Validation
 Route::middleware(['SESSION'])->group(function()
 {
+    //COMMON Routes
     Route::get('/sign_out', 'CommonController@requestSignOut')->name('signout');
+    
+    Route::get('/userProfile/', 'CommonController@viewAboutUser')->name('aboutUser');
+    Route::get('/Update/userProfile', 'CommonController@viewUpdateProfile')->name('aboutUser.update');
+    Route::post('/Update/userProfile', 'CommonController@requestUpdateProfile');
+
+    Route::get('/Update/Password', 'CommonController@viewChnagePassword')->name('changePassword');
+    Route::post('/Update/Password', 'CommonController@requestChnagePassword');
 
     //ADMIN Session Validation
     Route::group(['middleware'=>['ADMIN']],function()
     {
       Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dash');
+
+      Route::get('/admin/dashboard/QuestionManagement', 'AdminController@viewQuestionManagement')->name('admin.questions');
+      Route::get('/admin/dashboard/Edit/Question/{id}', 'AdminController@viewEditQuestionManagement')->name('admin.questions.edit');
+      Route::post('/admin/dashboard/Edit/Question/{id}', 'AdminController@requestEditQuestionManagement');
+
+      Route::get('/admin/dashboard/consumers', 'AdminController@viewConsumers')->name('admin.consumers');
+      Route::get('/admin/dashboard/Delete/consumers/{username}', 'AdminController@removeConsumers')->name('admin.consumers.remove');
+
       Route::get('/admin/dashboard/survey-results', 'AdminController@viewScore')->name('admin.score');
     });
 

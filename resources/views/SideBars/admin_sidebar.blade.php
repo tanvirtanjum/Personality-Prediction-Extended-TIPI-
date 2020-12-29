@@ -18,18 +18,15 @@
 				<ul class="pop">
 					<li><a><i class="fas fa-user-circle"></i>Profile<span class="sub_arrow"></span></a>
 						<ul>
-							<li><a href="#"><i class="fas fa-address-card"></i>{{session('user')}}</a></li>
-							<li><a href="#"><i class="fas fa-key"></i>Change Password</a></li>
+							<li><a href="{{route('aboutUser')}}"><i class="fas fa-address-card"></i>{{session('user')}}</a></li>
+							<li><a href="{{route('changePassword')}}"><i class="fas fa-key"></i>Change Password</a></li>
 							<li><a href="{{route('signout')}}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
 						</ul>
 					</li>
 					<li><a><i class="fas fa-tasks"></i>Management<span class="sub_arrow"></span></a>
 						<ul>
-							<li><a href="#"><i class="fas fa-user-circle"></i>Employee Management</a></li>
-							<li><a href="#"><i class="fas fa-users"></i>Customer Management</a></li>
-							<li><a href="#"><i class="fab fa-product-hunt"></i>Product Management</a></li>
-							<li><a href="#"><i class="fas fa-registered"></i>Pending Registrations</a></li>
-							<li><a href="#"><i class="fas fa-flag"></i>Notice Manage</a></li>
+							<li><a href="{{route('admin.questions')}}"><i class="fas fa-question-circle"></i>Question Management</a></li>
+							<li><a href="{{route('admin.consumers')}}"><i class="fas fa-users"></i>Consumer Management</a></li>
 						</ul>
 					</li>
 					<li><a><i class="fas fa-history"></i>Result<span class="sub_arrow"></span></a>
