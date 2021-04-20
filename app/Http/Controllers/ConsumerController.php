@@ -22,17 +22,24 @@ class ConsumerController extends Controller
 
   function postQuizModule(Request $request)
   {
-    //Initialization
-    $Extraversion= 0;
+    //For Extended TIPI - Initialization
+    $Extraversion= 0.0;
     $ecount = 0;
-    $Conscientiousness= 0;
+    $Conscientiousness= 0.0;
     $ccount = 0;
-    $Openness= 0;
+    $Openness= 0.0;
     $ocount = 0;
-    $Agreeableness= 0;
+    $Agreeableness= 0.0;
     $acount = 0;
-    $Neuroticism= 0;
+    $Neuroticism= 0.0;
     $ncount = 0;
+
+    //For TIPI - Initialization
+    $TIPI_Extraversion= 0.0;
+    $TIPI_Conscientiousness= 0.0;
+    $TIPI_Openness= 0.0;
+    $TIPI_Agreeableness= 0.0;
+    $TIPI_Neuroticism= 0.0;
 
     //Get Answers From Form
     $q1 = $request->q1;//Extraversion(Set-1)-S
@@ -56,6 +63,15 @@ class ConsumerController extends Controller
     $q19 = $request->q19;//Neuroticism(Set-1)-S
     $q20 = $request->q20;//Neuroticism(Set-1)-R
 
+    //Claculation For TIPI Method
+    $TIPI_Extraversion = ($q1 + $q2)/2;
+    $TIPI_Conscientiousness= ($q5 + $q6)/2;
+    $TIPI_Openness = ($q9 + $q10)/2;
+    $TIPI_Agreeableness = ($q13 + $q14)/2;
+    $TIPI_Neuroticism = ($q17 + $q18)/2;
+
+
+    //Calculation For Extended TIPI Method
     //Calculating Extraversion
     if(($q1==1 && $q2==7) || ($q1==7 && $q2==1))
     {
@@ -194,10 +210,15 @@ class ConsumerController extends Controller
     //Store in Database
       DB::table('results')->insert(['username'=>$request->session()->get('user'),
                                     'extraversion_score'=>$Extraversion,
+                                    'tipi_extraversion_score'=>$TIPI_Extraversion,
                                     'conscientiousness_score'=>$Conscientiousness,
+                                    'tipi_conscientiousness_score'=>$TIPI_Conscientiousness,
                                     'openness_score'=>$Openness,
+                                    'tipi_openness_score'=>$TIPI_Openness,
                                     'agreeableness_score'=>$Agreeableness,
-                                    'neuroticism_score'=>$Neuroticism]);
+                                    'tipi_agreeableness_score'=>$TIPI_Agreeableness,
+                                    'neuroticism_score'=>$Neuroticism,
+                                    'tipi_neuroticism_score'=>$TIPI_Neuroticism]);
     //Redirect
     $request->session()->flash('_message', 'Thank you for submission.');
     return redirect()->route('consumer.dash');

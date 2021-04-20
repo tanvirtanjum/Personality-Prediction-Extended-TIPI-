@@ -1,7 +1,7 @@
 @if(Session::get('role') == 1)
     @include('SideBars.admin_sidebar')    
 @elseif(Session::get('role') == 2)
-    @include('SideBars.consumner_sidebar')
+    @include('SideBars.consumer_sidebar')
 @else
 @endif
 

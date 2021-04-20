@@ -25,13 +25,13 @@
                     <th>{{$question->id}}</th>
                     <th>{{$question->question}} </th>
                     <th>
-                      <select name= 'q{{$question->id}}'>
-                      @if($question->type_id == 1)
+                      <select name= 'q{{$question->id}}'> 
+                      @if($question->type_id == 1)<!-- For Standard Options -->
                         @foreach($ans as $answer)
                             <option value = '{{$answer->remark_standard}}'>{{$answer->ans}}</option>
                         @endforeach
                       @endif
-                      @if($question->type_id == 2)
+                      @if($question->type_id == 2)<!-- For Reverse Options -->
                         @foreach($ans as $answer)
                             <option value = '{{$answer->remark_reverse}}'>{{$answer->ans}}</option>
                         @endforeach

@@ -29,7 +29,7 @@ Route::middleware(['SESSION'])->group(function()
     //COMMON Routes
     Route::get('/sign_out', 'CommonController@requestSignOut')->name('signout');
     
-    Route::get('/userProfile/', 'CommonController@viewAboutUser')->name('aboutUser');
+    Route::get('/userProfile', 'CommonController@viewAboutUser')->name('aboutUser');
     Route::get('/Update/userProfile', 'CommonController@viewUpdateProfile')->name('aboutUser.update');
     Route::post('/Update/userProfile', 'CommonController@requestUpdateProfile');
 
